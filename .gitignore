@@ -1,3 +1,21 @@
-node_modules
-node_modules
+# Dependencies
+node_modules/
+dist/
 .env
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Environment variables
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
