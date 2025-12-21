@@ -8,8 +8,9 @@ async function bootstrap() {
   // CORS configuration pour dev et prod
   const allowedOrigins = [
     'http://localhost:3000',
+    'http://localhost:3002',
     process.env.FRONTEND_URL,
-    'facture-beta-seven.vercel.app',
+    'https://facture-blue.vercel.app',
   ].filter(Boolean);
   
   app.enableCors({
