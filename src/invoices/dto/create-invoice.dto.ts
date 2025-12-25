@@ -37,4 +37,10 @@ export class CreateInvoiceDto {
   @IsOptional()
   @IsString()
   client_address?: string;
+
+  @IsOptional()
+  @IsNumber()
+  @Min(0)
+  @Type(() => Number)
+  labor_cost?: number;
 }

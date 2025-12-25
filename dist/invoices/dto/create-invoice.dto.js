@@ -61,4 +61,11 @@ __decorate([
     (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
 ], CreateInvoiceDto.prototype, "client_address", void 0);
+__decorate([
+    (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.IsNumber)(),
+    (0, class_validator_1.Min)(0),
+    (0, class_transformer_1.Type)(() => Number),
+    __metadata("design:type", Number)
+], CreateInvoiceDto.prototype, "labor_cost", void 0);
 //# sourceMappingURL=create-invoice.dto.js.map

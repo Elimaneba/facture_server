@@ -30,16 +30,19 @@ export class InvoicesService {
     await this.verifyOrganizationAccess(userId, createInvoiceDto.organization_id);
 
     // Recalculer les totaux côté backend pour éviter la falsification
-    let total_ht = 0;
+    let itemsTotal = 0;
     const itemsWithTotals = createInvoiceDto.items.map((item) => {
       const line_total = item.quantity * item.unit_price;
-      total_ht += line_total;
+      itemsTotal += line_total;
       return {
         ...item,
         line_total,
       };
     });
 
+    // Ajouter la main d'oeuvre au total HT
+    const laborCost = createInvoiceDto.labor_cost || 0;
+    const total_ht = itemsTotal + laborCost;
     const total_vat = total_ht * (createInvoiceDto.vat_rate / 100);
     const total_ttc = total_ht + total_vat;
 
@@ -73,6 +76,7 @@ export class InvoicesService {
         total_ttc,
         client_name: createInvoiceDto.client_name,
         client_address: createInvoiceDto.client_address,
+        labor_cost: laborCost > 0 ? laborCost : null,
       })
       .select()
       .single();

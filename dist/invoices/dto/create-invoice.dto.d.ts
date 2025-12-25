@@ -10,4 +10,5 @@ export declare class CreateInvoiceDto {
     items: InvoiceItemDto[];
     client_name?: string;
     client_address?: string;
+    labor_cost?: number;
 }
